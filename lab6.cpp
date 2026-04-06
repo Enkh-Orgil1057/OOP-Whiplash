@@ -54,13 +54,13 @@ private:
         return 4 * side;
     }
 
-    void printVertices() {
-        cout << "Vertices:\n";
-        cout << "(" << x1 << ", " << y1 << ")\n";
-        cout << "(" << x2 << ", " << y2 << ")\n";
-        cout << "(" << x3 << ", " << y3 << ")\n";
-        cout << "(" << x4 << ", " << y4 << ")\n";
-    }
+        void printVertices() {
+            cout << "Vertices:\n";
+            cout << "(" << x1 << ", " << y1 << ")\n";
+            cout << "(" << x2 << ", " << y2 << ")\n";
+            cout << "(" << x3 << ", " << y3 << ")\n";
+            cout << "(" << x4 << ", " << y4 << ")\n";
+        }
 };
 
 
