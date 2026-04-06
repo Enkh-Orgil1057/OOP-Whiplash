@@ -8,12 +8,12 @@ class Shape {
     protected:
         string name;
     public:
-        void setName(string n) {
+        void setter(string n) {
             name = n;
         }
         //ner butaah
-        string getName() {
-        return name;
+        void getter() {
+        cout<< name<< endl;
         }
         //talbai oloh
         float area();
@@ -38,7 +38,19 @@ class Circle : public TwoDShape{
         float area(){
             return (radius * radius) * PI;
         }
-        
+
+        //garaas toirgiin tuv tseg bolon, radius utgiig avah
+        void setter(float _rad, float _center[]){
+            radius = _rad;
+            center_coor[0] = _center[0];
+            center_coor[1] = _center[1];
+        }
+        //oruulsan utguudiig harah
+        void getter(){
+            cout<< "Radius = " << radius << endl;
+            cout<< "Tuv tseg = " << center_coor[0] << ", "<< center_coor[0] << endl; 
+        }
+
 };
 
 // Дөрвөлжин хэмээх классыг TwoDShape функцээс удамшуулав
@@ -64,11 +76,11 @@ class Square : public TwoDShape {
             y4 = y1 - side;
         }
 
-        double area() {
+        float area() {
             return side * side;
         }
 
-        double perimeter() {
+        float perimeter() {
             return 4 * side;
         }
 
