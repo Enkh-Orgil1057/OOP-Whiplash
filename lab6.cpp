@@ -1,33 +1,33 @@
-using namespace std;
+
 #include <iostream>
 #include <cmath>
-
+using namespace std;
 class Shape {
-protected:
-    string name;
+    protected:
+        string name;
 
-public:
-    void setName(string n) {
-        name = n;
-    }
+    public:
+        void setName(string n) {
+            name = n;
+        }
 
-    string getName() {
+        string getName() {
         return name;
-    }
+        }
 };
 
 class TwoDShape : public Shape {
-public:
-    virtual double area() = 0;
-    virtual double perimeter() = 0;
+    public:
+        virtual double area() = 0;
+        virtual double perimeter() = 0;
 };
 
 
 // QUADRATE CLASS
 class Square : public TwoDShape {
-private:
-    double x1, y1, x2, y2, x3, y3, x4, y4;
-    double side;
+    private:
+        double x1, y1, x2, y2, x3, y3, x4, y4;
+        double side;
 
     public:
         void input() {
@@ -36,23 +36,23 @@ private:
             cout << "Side length: ";
             cin >> side;
 
-        x2 = x1 + side;
-        y2 = y1;
+            x2 = x1 + side;
+            y2 = y1;
 
-        x3 = x1 + side;
-        y3 = y1 - side;
+            x3 = x1 + side;
+            y3 = y1 - side;
 
-        x4 = x1;
-        y4 = y1 - side;
-    }
+            x4 = x1;
+            y4 = y1 - side;
+        }
 
-    double area() {
-        return side * side;
-    }
+        double area() {
+            return side * side;
+        }
 
-    double perimeter() {
-        return 4 * side;
-    }
+        double perimeter() {
+            return 4 * side;
+        }
 
         void printVertices() {
             cout << "Vertices:\n";
