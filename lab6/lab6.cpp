@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#define PI 3.14
 using namespace std;
 
 // Shape эх функцийг байгуулна:
@@ -10,18 +11,35 @@ class Shape {
         void setName(string n) {
             name = n;
         }
+        //ner butaah
         string getName() {
         return name;
         }
+        //talbai oloh
+        float area();
 };
 
 // TwoDShape эх функцийг Shape функцээс удамшуулан авна:
 class TwoDShape : public Shape {
     public:
-        virtual double area() = 0;
-        virtual double perimeter() = 0;
+        virtual float perimeter() = 0;
 };
 
+class Circle : public TwoDShape{
+    private:
+        float center_coor[2];
+        float radius;
+    public:
+        //perimeter oloh function oloh: 2*rad*PI
+        float perimeter(){
+            return (2 * radius * PI);
+        }
+        //toirgiin talbai oloh: rad^2 * PI
+        float area(){
+            return (radius * radius) * PI;
+        }
+        
+};
 
 // Дөрвөлжин хэмээх классыг TwoDShape функцээс удамшуулав
 class Square : public TwoDShape {
