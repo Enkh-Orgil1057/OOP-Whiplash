@@ -66,8 +66,55 @@ class Square : public TwoDShape {
 // Зөв гурвалжин классыг TwoDShape классаас удамшуулав
 class Triangle : public TwoDShape{
     protected:
-
+        float taliin_urt;
+        float deed_coor[2];
+        float zuun_dood_coor[2];
+        float baruun_dood_coor[2];
     public: 
+        // getter функцуудыг тодорхойлов:
+        float get_taliin_urt(){
+            return taliin_urt;
+        }
+
+        float get_deed_coor_x(){
+            return deed_coor[0];
+        }
+        float get_deed_coor_y(){
+            return deed_coor[1];
+        }
+
+        float get_zuun_dood_coor_x(){
+            return zuun_dood_coor[0];
+        }
+        float get_zuun_dood_coor_y(){
+            return zuun_dood_coor[1];
+        }
+
+        float get_baruun_dood_coor_x(){
+            return baruun_dood_coor[0];
+        }
+        float get_baruun_dood_coor_y(){
+            return baruun_dood_coor[1];
+        }
+
+        // setter функцуудыг тодорхойлов:
+        void set_taliin_urt(float t){
+            if (t > 0)
+                taliin_urt = t;
+        }
+
+        void set_deed_coor(float d1, float d2){
+                deed_coor[0] = d1;
+                deed_coor[1] = d2;
+        }
+        void set_zuun_dood_coor(float z1, float z2){
+                zuun_dood_coor[0] = z1;
+                zuun_dood_coor[1] = z2;
+        }
+        void set_baruun_dood_coor(float b1, float b2){
+                baruun_dood_coor[0] = b1;
+                baruun_dood_coor[1] = b2;
+        }
 };
 
 int main() {
