@@ -115,6 +115,30 @@ class Triangle : public TwoDShape{
                 baruun_dood_coor[0] = b1;
                 baruun_dood_coor[1] = b2;
         }
+
+        // Талбайг бодож гаргах функц тодорхойлов:
+        float findArea(){
+            return taliin_urt*taliin_urt/2;
+        }
+
+        // Периметрийг бодож гаргах функц тодорхойлов:
+        float findPerimeter(){
+            return taliin_urt*3;
+        }
+
+        // зүүн доод цэгийг бодож гаргах функц тодорхойлов:
+        float find_zuun_dood_coor_x(){
+            return deed_coor[0]-(taliin_urt/2);
+        }
+        float find_zuun_dood_coor_y(){
+            return deed_coor[1]-(taliin_urt*sqrt(3)/2);
+        }
+        float find_baruun_dood_coor_x(){
+            return deed_coor[0]+(taliin_urt/2);
+        }
+        float find_baruun_dood_coor_y(){
+            return deed_coor[1]-(taliin_urt*sqrt(3)/2);
+        }
 };
 
 int main() {
