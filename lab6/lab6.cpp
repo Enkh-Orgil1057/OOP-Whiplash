@@ -16,13 +16,13 @@ class Shape {
         cout<< name<< endl;
         }
         //talbai oloh
-        float area();
+        float findArea();
 };
 
 // TwoDShape эх функцийг Shape функцээс удамшуулан авна:
 class TwoDShape : public Shape {
     public:
-        virtual float perimeter() = 0;
+        virtual float findPerimeter() = 0;
 };
 
 class Circle : public TwoDShape{
@@ -31,11 +31,11 @@ class Circle : public TwoDShape{
         float radius;
     public:
         //perimeter oloh function oloh: 2*rad*PI
-        float perimeter(){
+        float findPerimeter(){
             return (2 * radius * PI);
         }
         //toirgiin talbai oloh: rad^2 * PI
-        float area(){
+        float findArea(){
             return (radius * radius) * PI;
         }
 
@@ -101,8 +101,8 @@ class Triangle : public TwoDShape{
         float zuun_dood_coor[2];
         float baruun_dood_coor[2];
     public: 
-        // getter функцуудыг тодорхойлов:
-        float get_taliin_urt(){
+    // getter функцуудыг тодорхойлов:
+    float get_taliin_urt(){
             return taliin_urt;
         }
 
@@ -126,7 +126,8 @@ class Triangle : public TwoDShape{
         float get_baruun_dood_coor_y(){
             return baruun_dood_coor[1];
         }
-
+        
+        //Orgil: Tailbariin daguu "deed oroin coordinat bolon taliin urtiig avaad nuguu 2 oroin bairshliig oldog baina"
         // setter функцуудыг тодорхойлов:
         void set_taliin_urt(float t){
             if (t > 0)
