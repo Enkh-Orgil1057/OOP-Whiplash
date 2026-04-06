@@ -1,21 +1,21 @@
-
 #include <iostream>
 #include <cmath>
 using namespace std;
+
+// Shape эх функцийг байгуулна:
 class Shape {
     protected:
         string name;
-
     public:
         void setName(string n) {
             name = n;
         }
-
         string getName() {
         return name;
         }
 };
 
+// TwoDShape эх функцийг Shape функцээс удамшуулан авна:
 class TwoDShape : public Shape {
     public:
         virtual double area() = 0;
@@ -23,7 +23,7 @@ class TwoDShape : public Shape {
 };
 
 
-// QUADRATE CLASS
+// Дөрвөлжин хэмээх классыг TwoDShape функцээс удамшуулав
 class Square : public TwoDShape {
     private:
         double x1, y1, x2, y2, x3, y3, x4, y4;
@@ -63,6 +63,12 @@ class Square : public TwoDShape {
         }
 };
 
+// Зөв гурвалжин классыг TwoDShape классаас удамшуулав
+class Triangle : public TwoDShape{
+    protected:
+
+    public: 
+};
 
 int main() {
     Square sq;
