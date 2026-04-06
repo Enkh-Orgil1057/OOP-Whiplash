@@ -29,12 +29,12 @@ private:
     double x1, y1, x2, y2, x3, y3, x4, y4;
     double side;
 
-public:
-    void input() {
-        cout << "Square top-left (x y): ";
-        cin >> x1 >> y1;
-        cout << "Side length: ";
-        cin >> side;
+    public:
+        void input() {
+            cout << "Square top-left (x y): ";
+            cin >> x1 >> y1;
+            cout << "Side length: ";
+            cin >> side;
 
         x2 = x1 + side;
         y2 = y1;
