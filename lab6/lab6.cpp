@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <string>
 #define PI 3.14
 using namespace std;
 
@@ -13,16 +14,16 @@ class Shape {
         }
         //ner butaah
         void getter() {
-        cout<< name<< endl;
+        cout << name << endl;
         }
         //talbai oloh
-        float findArea();
+        virtual float area() = 0;
 };
 
 // TwoDShape эх функцийг Shape функцээс удамшуулан авна:
 class TwoDShape : public Shape {
     public:
-        virtual float findPerimeter() = 0;
+        virtual float perimeter() = 0;
 };
 
 class Circle : public TwoDShape{
@@ -31,66 +32,116 @@ class Circle : public TwoDShape{
         float radius;
     public:
         //perimeter oloh function oloh: 2*rad*PI
-        float findPerimeter(){
+        float perimeter()  {
             return (2 * radius * PI);
         }
         //toirgiin talbai oloh: rad^2 * PI
-        float findArea(){
+        float area()  {
             return (radius * radius) * PI;
         }
 
         //garaas toirgiin tuv tseg bolon, radius utgiig avah
-        void setter(float _rad, float _center[]){
+        void setter(float _rad, float _center[], string n){
             radius = _rad;
             center_coor[0] = _center[0];
             center_coor[1] = _center[1];
+            name = n;
         }
         //oruulsan utguudiig harah
         void getter(){
-            cout<< "Radius = " << radius << endl;
-            cout<< "Tuv tseg = " << center_coor[0] << ", "<< center_coor[0] << endl; 
+            cout<< "Radius = " << get_rad << endl;
+            cout<< "Tuv tseg = " << center_coor[0] << ", "<< center_coor[1] << endl; 
         }
-
+        
+        float get_rad(){
+            return radius;
+        }
 };
 
-// Дөрвөлжин хэмээх классыг TwoDShape функцээс удамшуулав
+// Квадрат хэмээх классыг TwoDShape функцээс удамшуулав
 class Square : public TwoDShape {
-    private:
-        double x1, y1, x2, y2, x3, y3, x4, y4;
-        double side;
+protected:
+    float taliin_urt;
+    float deed_zvvn[2];     // top-left
+    float deed_baruun[2];   // top-right
+    float dood_baruun[2];   // bottom-right
+    float dood_zvvn[2];     // bottom-left
 
-    public:
-        void input() {
-            cout << "Square top-left (x y): ";
-            cin >> x1 >> y1;
-            cout << "Side length: ";
-            cin >> side;
+public:
+    // Getters
+    float get_taliin_urt() {
+        return taliin_urt;
+    }
 
-            x2 = x1 + side;
-            y2 = y1;
+    float get_deed_zvvn_x() { return deed_zvvn[0]; }
+    float get_deed_zvvn_y() { return deed_zvvn[1]; }
 
-            x3 = x1 + side;
-            y3 = y1 - side;
+    float get_deed_baruun_x() { return deed_baruun[0]; }
+    float get_deed_baruun_y() { return deed_baruun[1]; }
 
-            x4 = x1;
-            y4 = y1 - side;
-        }
+    float get_dood_baruun_x() { return dood_baruun[0]; }
+    float get_dood_baruun_y() { return dood_baruun[1]; }
 
-        float area() {
-            return side * side;
-        }
+    float get_dood_zvvn_x() { return dood_zvvn[0]; }
+    float get_dood_zvvn_y() { return dood_zvvn[1]; }
 
-        float perimeter() {
-            return 4 * side;
-        }
+    // Setters
+    void set_taliin_urt(float t) {
+        if (t > 0)
+            taliin_urt = t;
+    }
 
-        void printVertices() {
-            cout << "Vertices:\n";
-            cout << "(" << x1 << ", " << y1 << ")\n";
-            cout << "(" << x2 << ", " << y2 << ")\n";
-            cout << "(" << x3 << ", " << y3 << ")\n";
-            cout << "(" << x4 << ", " << y4 << ")\n";
-        }
+    void set_deed_zvvn(float x, float y) {
+        deed_zvvn[0] = x;
+        deed_zvvn[1] = y;
+    }
+
+    void set_deed_baruun(float x, float y) {
+        deed_baruun[0] = x;
+        deed_baruun[1] = y;
+    }
+
+    void set_dood_baruun(float x, float y) {
+        dood_baruun[0] = x;
+        dood_baruun[1] = y;
+    }
+
+    void set_dood_zvvn(float x, float y) {
+        dood_zvvn[0] = x;
+        dood_zvvn[1] = y;
+    }
+
+    // Талбай
+    float area() {
+        return taliin_urt * taliin_urt;
+    }
+
+    // Периметр 
+    float perimeter() {
+        return 4 * taliin_urt;
+    }
+
+    // Бусад оройг бодох
+    float find_deed_baruun_x() {
+        return deed_zvvn[0] + taliin_urt;
+    }
+    float find_deed_baruun_y() {
+        return deed_zvvn[1];
+    }
+
+    float find_dood_baruun_x() {
+        return deed_zvvn[0] + taliin_urt;
+    }
+    float find_dood_baruun_y() {
+        return deed_zvvn[1] - taliin_urt;
+    }
+
+    float find_dood_zvvn_x() {
+        return deed_zvvn[0];
+    }
+    float find_dood_zvvn_y() {
+        return deed_zvvn[1] - taliin_urt;
+    }
 };
 
 // Зөв гурвалжин классыг TwoDShape классаас удамшуулав
@@ -101,8 +152,8 @@ class Triangle : public TwoDShape{
         float zuun_dood_coor[2];
         float baruun_dood_coor[2];
     public: 
-    // getter функцуудыг тодорхойлов:
-    float get_taliin_urt(){
+        // getter функцуудыг тодорхойлов:
+        float get_taliin_urt(){
             return taliin_urt;
         }
 
@@ -126,8 +177,7 @@ class Triangle : public TwoDShape{
         float get_baruun_dood_coor_y(){
             return baruun_dood_coor[1];
         }
-        
-        //Orgil: Tailbariin daguu "deed oroin coordinat bolon taliin urtiig avaad nuguu 2 oroin bairshliig oldog baina"
+
         // setter функцуудыг тодорхойлов:
         void set_taliin_urt(float t){
             if (t > 0)
@@ -148,12 +198,12 @@ class Triangle : public TwoDShape{
         }
 
         // Талбайг бодож гаргах функц тодорхойлов:
-        float findArea(){
-            return taliin_urt*taliin_urt/2;
+        float area() {
+            return taliin_urt * taliin_urt * sqrt(3) / 4;
         }
 
         // Периметрийг бодож гаргах функц тодорхойлов:
-        float findPerimeter(){
+        float perimeter() {
             return taliin_urt*3;
         }
 
@@ -173,14 +223,42 @@ class Triangle : public TwoDShape{
 };
 
 int main() {
-    Square sq;
-    sq.setName("Square");
-    cout << "Shape: " << sq.getName() << endl;
+    Square s;
 
-    sq.input();
-    cout << "Area: " << sq.area() << endl;
-    cout << "Perimeter: " << sq.perimeter() << endl;
-    sq.printVertices();
+    float tal;
+    float x, y;
 
+    cout << "Kvadratiin taliin urtiig oruulna uu: ";
+    cin >> tal;
+
+    cout << "Deed zuun oroin koordinat (x y) oruulna uu: ";
+    cin >> x >> y;
+
+    // Утгуудыг тохируулна
+    s.set_taliin_urt(tal);
+    s.set_deed_zvvn(x, y);
+
+    cout << "\nSquare Info" << endl;
+
+    cout << "Taliin urt: " << s.get_taliin_urt() << endl;
+
+    cout << "Deed zuun: ("
+        << s.get_deed_zvvn_x() << ", "
+        << s.get_deed_zvvn_y() << ")" << endl;
+
+    cout << "Deed baruun: ("
+        << s.find_deed_baruun_x() << ", "
+        << s.find_deed_baruun_y() << ")" << endl;
+
+    cout << "Dood baruun: ("
+        << s.find_dood_baruun_x() << ", "
+        << s.find_dood_baruun_y() << ")" << endl;
+
+    cout << "Dood zuun: ("
+        << s.find_dood_zvvn_x() << ", "
+        << s.find_dood_zvvn_y() << ")" << endl;
+
+    cout << "Area: " << s.area() << endl;
+    cout << "Perimeter: " << s.perimeter() << endl;
     return 0;
 }
