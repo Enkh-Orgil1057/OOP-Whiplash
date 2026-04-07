@@ -16,7 +16,7 @@ class Shape {
         cout<< name<< endl;
         }
         //talbai oloh
-        float findArea();
+        virtual float findArea() = 0;
 };
 
 // TwoDShape эх функцийг Shape функцээс удамшуулан авна:
@@ -48,7 +48,7 @@ class Circle : public TwoDShape{
         //oruulsan utguudiig harah
         void getter(){
             cout<< "Radius = " << radius << endl;
-            cout<< "Tuv tseg = " << center_coor[0] << ", "<< center_coor[0] << endl; 
+            cout<< "Tuv tseg = " << center_coor[0] << ", "<< center_coor[1] << endl; 
         }
 
 };
@@ -107,12 +107,12 @@ public:
     }
 
     // Талбай
-    float area()  {
+    float findArea()  {
         return taliin_urt * taliin_urt;
     }
 
     // Периметр 
-    float perimeter()  {
+    float findPerimeter()  {
         return 4 * taliin_urt;
     }
 
