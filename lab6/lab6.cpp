@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 #define PI 3.14
 using namespace std;
 
@@ -113,31 +114,13 @@ class Triangle : public TwoDShape{
         float baruun_dood_coor[2];
     public: 
         // getter функцуудыг тодорхойлов:
-        float get_taliin_urt(){
-            return taliin_urt;
-        }
+        void getter() {
+        cout << "Taliin urt: " << fixed << setprecision(2) << taliin_urt << endl;
 
-        float get_deed_coor_x(){
-            return deed_coor[0];
-        }
-        float get_deed_coor_y(){
-            return deed_coor[1];
-        }
+        cout << "Dood baruun: (" << fixed << setprecision(2) << find_baruun_dood_coor_x()<< ", " << fixed << setprecision(2) << find_baruun_dood_coor_y() << ")\n";
 
-        float get_zuun_dood_coor_x(){
-            return zuun_dood_coor[0];
-        }
-        float get_zuun_dood_coor_y(){
-            return zuun_dood_coor[1];
-        }
-
-        float get_baruun_dood_coor_x(){
-            return baruun_dood_coor[0];
-        }
-        float get_baruun_dood_coor_y(){
-            return baruun_dood_coor[1];
-        }
-
+        cout << "Dood zuun: (" << fixed << setprecision(2) << find_zuun_dood_coor_x() << ", " << fixed << setprecision(2) << find_zuun_dood_coor_y() << ")\n";
+    }
         
         //Orgil: Tailbariin daguu "deed oroin coordinat bolon taliin urtiig avaad nuguu 2 oroin bairshliig oldog baina"
         // setter функцуудыг тодорхойлов:
@@ -155,6 +138,10 @@ class Triangle : public TwoDShape{
         void setter(float a, float b, float c, string n){
             set_taliin_urt(a); // талын урт авах
             set_deed_coor(b, c); // дээд координатыг авах
+            find_zuun_dood_coor_x();
+            find_zuun_dood_coor_y();
+            find_baruun_dood_coor_x();
+            find_baruun_dood_coor_y();
             name = n;
         }
 
@@ -185,24 +172,16 @@ class Triangle : public TwoDShape{
         // цэгийг бодож гаргах функц бүрийг тодорхойлов:
         // үүний доор нь нэгтгэв.
         float find_zuun_dood_coor_x(){
-            return deed_coor[0]-(taliin_urt/2);
+            return deed_coor[0]-(taliin_urt/2.0);
         }
         float find_zuun_dood_coor_y(){
-            return deed_coor[1]-(taliin_urt*sqrt(3)/2);
+            return deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
         }
         float find_baruun_dood_coor_x(){
-            return deed_coor[0]+(taliin_urt/2);
+            return deed_coor[0]+(taliin_urt/2.0);
         }
         float find_baruun_dood_coor_y(){
-            return deed_coor[1]-(taliin_urt*sqrt(3)/2);
-        }
-
-        // дээрх функцуудын нэгдэл
-        float find_coordinates(){
-            find_zuun_dood_coor_x();
-            find_zuun_dood_coor_y();
-            find_baruun_dood_coor_x();
-            find_baruun_dood_coor_y();
+            return deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
         }
 
 };
@@ -212,10 +191,10 @@ int main() {
 
     float tal, x, y;
 
-    cout << "Kvadratiin taliin urtiig oruulna uu: ";
+    cout << "\nKvadratiin taliin urtiig oruulna uu: ";
     cin >> tal;
 
-    cout << "Deed zuun oroin koordinat (x y) oruulna uu: ";
+    cout << "\nDeed zuun oroin koordinat (x y) oruulna uu: ";
     cin >> x >> y;
 
     // setter ашиглана
@@ -226,8 +205,25 @@ int main() {
     // getter (print хийж байгаа)
     s.getter();
 
-    cout << "Area: " << s.findArea() << endl;
-    cout << "Perimeter: " << s.findPerimeter() << endl;
+    cout << "\nArea: " << s.findArea() << endl;
+    cout << "\nPerimeter: " << s.findPerimeter() << endl;
+
+    Triangle T1;
+
+    cout << "\nGurvaljingiin taliin urtiig oruulna uu: ";
+    cin >> tal;
+
+    cout << "\nDeed oroin koordinat (x y) oruulna uu: ";
+    cin >> x >> y;
+
+    T1.setter(tal, x, y, "Гурвалжин");
+
+    
+    // дэлгэцэд хэвлэнэ
+    T1.getter();
+
+    cout << "\nArea: " << T1.findArea() << endl;
+    cout << "\nPerimeter: " << T1.findPerimeter() << endl;
 
     return 0;
 }
