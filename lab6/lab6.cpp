@@ -11,7 +11,7 @@ class Shape {
         void setter(string n) {
             name = n;
         }
-        //ner butaah
+        // нэр буцаах getter функц
         void getter() {
         cout<< name<< endl;
         }
@@ -147,8 +147,8 @@ class Triangle : public TwoDShape{
         float zuun_dood_coor[2];
         float baruun_dood_coor[2];
     public: 
-    // getter функцуудыг тодорхойлов:
-    float get_taliin_urt(){
+        // getter функцуудыг тодорхойлов:
+        float get_taliin_urt(){
             return taliin_urt;
         }
 
@@ -172,6 +172,7 @@ class Triangle : public TwoDShape{
         float get_baruun_dood_coor_y(){
             return baruun_dood_coor[1];
         }
+
         
         //Orgil: Tailbariin daguu "deed oroin coordinat bolon taliin urtiig avaad nuguu 2 oroin bairshliig oldog baina"
         // setter функцуудыг тодорхойлов:
@@ -184,6 +185,16 @@ class Triangle : public TwoDShape{
                 deed_coor[0] = d1;
                 deed_coor[1] = d2;
         }
+        // setter() функцээ set_taliin_urt ба set_deed_coor
+        // функцийг дууддаг болгон дахин тодорхойлов
+        void setter(float a, float b, float c, string n){
+            set_taliin_urt(a); // талын урт авах
+            set_deed_coor(b, c); // дээд координатыг авах
+            name = n;
+        }
+
+        // ашиглахгүй код:
+/*
         void set_zuun_dood_coor(float z1, float z2){
                 zuun_dood_coor[0] = z1;
                 zuun_dood_coor[1] = z2;
@@ -192,18 +203,22 @@ class Triangle : public TwoDShape{
                 baruun_dood_coor[0] = b1;
                 baruun_dood_coor[1] = b2;
         }
+*/
 
-        // Талбайг бодож гаргах функц тодорхойлов:
+        // Shape эх функцийн талбай бодож гаргах
+        // функцийг дахин тодорхойлов:
         float findArea(){
             return taliin_urt*taliin_urt/2;
         }
 
-        // Периметрийг бодож гаргах функц тодорхойлов:
+        // TwoDShape эх функцийн Периметрийг бодож
+        // гаргах функцийг дахин тодорхойлов:
         float findPerimeter(){
             return taliin_urt*3;
         }
 
-        // зүүн доод цэгийг бодож гаргах функц тодорхойлов:
+        // цэгийг бодож гаргах функц бүрийг тодорхойлов:
+        // үүний доор нь нэгтгэв.
         float find_zuun_dood_coor_x(){
             return deed_coor[0]-(taliin_urt/2);
         }
@@ -216,6 +231,15 @@ class Triangle : public TwoDShape{
         float find_baruun_dood_coor_y(){
             return deed_coor[1]-(taliin_urt*sqrt(3)/2);
         }
+
+        // дээрх функцуудын нэгдэл
+        float find_coordinates(){
+            find_zuun_dood_coor_x();
+            find_zuun_dood_coor_y();
+            find_baruun_dood_coor_x();
+            find_baruun_dood_coor_y();
+        }
+
 };
 
 int main() {
