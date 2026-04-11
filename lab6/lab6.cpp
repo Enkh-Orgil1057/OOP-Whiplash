@@ -193,7 +193,6 @@ class Triangle : public TwoDShape{
         }
 
         // цэгийг бодож гаргах функц бүрийг тодорхойлов:
-        // үүний доор нь нэгтгэв.
         float find_zuun_dood_coor_x(){
             return deed_coor[0]-(taliin_urt/2.0);
         }
