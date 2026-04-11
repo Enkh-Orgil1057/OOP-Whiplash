@@ -12,6 +12,10 @@ class Shape {
         void setter(string n) {
             name = n;
         }
+        //gishuun ugugdul hevlej haruuldag function
+        void print(){
+            cout << "Ner: " << name<< endl;
+        }
         // нэр буцаах getter функц
         string getter() {
         return name;
@@ -41,16 +45,24 @@ class Circle : public TwoDShape{
         }
 
         //garaas toirgiin tuv tseg bolon, radius utgiig avah
-        void setter(float _rad, float _center[], string n){ get
+        void setter(float _rad, float _center[], string n){
             radius = _rad;
             center_coor[0] = _center[0];
             center_coor[1] = _center[1];
             name = n;
         }
         //oruulsan utguudiig harah
-        void getter(){
+        void print(){
             cout<< "Radius = " << radius << endl;
             cout<< "Tuv tseg = " << center_coor[0] << ", "<< center_coor[1] << endl; 
+        }
+        //radius butsaah function
+        float get_rad(){
+            return radius;
+        }
+        //tuv tseg butsaah function
+        float* get_center(){
+            return center_coor; 
         }
 
 };
@@ -92,7 +104,7 @@ public:
     }
 
     // Бүх мэдээлэл хэвлэх
-    void getter() {
+    void print() {
         cout << "Taliin urt: " << taliin_urt << endl;
 
         cout << "Deed zuun: (" << deed_zvvn[0] << ", " << deed_zvvn[1] << ")\n";
@@ -103,6 +115,16 @@ public:
 
         cout << "Dood zuun: (" << dood_zvvn[0] << ", " << dood_zvvn[1] << ")\n";
     }
+
+    //taliin urt butsaah function
+    float get_tal(){
+        return taliin_urt;
+    }
+    //oroinuudiig coordinatruudig butsaah funcitonuud
+    float* get_deed_zvvn(){ return deed_zvvn;}
+    float* get_dood_zvvn(){ return dood_zvvn;}
+    float* get_deed_baruun(){ return deed_baruun;}
+    float* get_dood_baruun(){ return dood_baruun;}
 };
 
 
