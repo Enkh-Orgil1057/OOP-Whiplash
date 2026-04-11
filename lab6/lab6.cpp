@@ -13,8 +13,8 @@ class Shape {
             name = n;
         }
         // нэр буцаах getter функц
-        void getter() {
-        cout << name << endl;
+        string getter() {
+        return name;
         }
         //talbai oloh
         virtual float findArea() = 0;
@@ -41,7 +41,7 @@ class Circle : public TwoDShape{
         }
 
         //garaas toirgiin tuv tseg bolon, radius utgiig avah
-        void setter(float _rad, float _center[], string n){
+        void setter(float _rad, float _center[], string n){ get
             radius = _rad;
             center_coor[0] = _center[0];
             center_coor[1] = _center[1];
@@ -226,6 +226,5 @@ int main() {
     cout << "\nArea: " << T1.findArea() << endl;
     cout << "\nPerimeter: " << T1.findPerimeter() << endl;
 
-    Circle
     return 0;
 }
