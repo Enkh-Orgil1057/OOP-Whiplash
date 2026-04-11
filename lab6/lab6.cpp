@@ -137,8 +137,8 @@ class Triangle : public TwoDShape{
         float baruun_dood_coor[2];
     public: 
         // getter функцуудыг тодорхойлов:
-        void getter() {
-        cout << "Taliin urt: " << fixed << setprecision(2) << taliin_urt << endl;
+        void print() {
+        cout << "Taliin urt: " << fixed << setprecision(2) <<  taliin_urt << endl;
 
         cout << "Dood baruun: (" << fixed << setprecision(2) << find_baruun_dood_coor_x()<< ", " << fixed << setprecision(2) << find_baruun_dood_coor_y() << ")\n";
 
@@ -168,17 +168,27 @@ class Triangle : public TwoDShape{
             name = n;
         }
 
-        // ашиглахгүй код:
-/*
-        void set_zuun_dood_coor(float z1, float z2){
-                zuun_dood_coor[0] = z1;
-                zuun_dood_coor[1] = z2;
+        float get_taliin_urt(){
+            return taliin_urt;
         }
-        void set_baruun_dood_coor(float b1, float b2){
-                baruun_dood_coor[0] = b1;
-                baruun_dood_coor[1] = b2;
+        float get_deed_coor_x(){
+            return deed_coor[0];
         }
-*/
+        float get_deed_coor_y(){
+            return deed_coor[1];
+        }
+        float get_zuun_dood_coor_x(){
+            return zuun_dood_coor[0];
+        }
+        float get_zuun_dood_coor_y(){
+            return zuun_dood_coor[1];
+        }
+        float get_baruun_dood_coor_x(){
+            return baruun_dood_coor[0];
+        }
+        float get_baruun_dood_coor_y(){
+            return baruun_dood_coor[1];
+        }
 
         // Shape эх функцийн талбай бодож гаргах
         // функцийг дахин тодорхойлов:
@@ -240,7 +250,6 @@ int main() {
     cin >> x >> y;
 
     T1.setter(tal, x, y, "Гурвалжин");
-
     
     // дэлгэцэд хэвлэнэ
     T1.getter();
