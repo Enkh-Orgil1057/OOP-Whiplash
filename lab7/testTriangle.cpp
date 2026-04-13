@@ -72,8 +72,6 @@ class Triangle : public TwoDShape{
         float deed_coor[2];
         float zuun_dood_coor[2];
         float baruun_dood_coor[2];
-        float perimeter;
-        float area;
     public: 
 
         // анхдагч байгуулагч
@@ -85,8 +83,6 @@ class Triangle : public TwoDShape{
             zuun_dood_coor[1] = 0;
             baruun_dood_coor[0] = 0;
             baruun_dood_coor[1] = 0;
-            area = findArea();
-            perimeter = findPerimeter();
         }
 
         //параметртэй байгуулагч
@@ -99,8 +95,6 @@ class Triangle : public TwoDShape{
             zuun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
             baruun_dood_coor[0] = deed_coor[0]+(taliin_urt/2.0);
             baruun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
-            area = findArea();
-            perimeter = findPerimeter();
         }
 
         //гараас талын урт, нэр болон дээд цэгийн координатыг авах 
@@ -113,8 +107,6 @@ class Triangle : public TwoDShape{
             zuun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
             baruun_dood_coor[0] = deed_coor[0]+(taliin_urt/2.0);
             baruun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
-            area = findArea();
-            perimeter = findPerimeter();
         }
 
         float get_taliin_urt(){
