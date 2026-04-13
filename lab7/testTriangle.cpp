@@ -81,7 +81,7 @@ class Triangle : public TwoDShape{
         }
 
         //параметртэй байгуулагч
-        Triangle(string n, float negj_utga, float x, float y) : TwoDShape(name, negj_utga, default_coor) {
+        Triangle(string n, float negj_utga, float x, float y) : TwoDShape() {
             zuun_dood_coor[0] = default_coor[0]-(negj_utga/2.0);
             zuun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
             baruun_dood_coor[0] = default_coor[0]+(negj_utga/2.0);
@@ -132,8 +132,8 @@ class Triangle : public TwoDShape{
         }
 
         // периметрийг хэвлэдэг функц
-        void printPerimeter(){
-            cout << "Perimeter: " << fixed << setprecision(2) << findPerimeter() << endl;
+        void printArea(){
+            cout << "Area: " << fixed << setprecision(2) << findArea() << endl;
         }
 
         // талбай бодож гаргах функц
@@ -162,18 +162,18 @@ int main(){
 
     cout << endl;
 
-    arr1[0].printPerimeter();
-    arr1[1].printPerimeter();
-    arr1[2].printPerimeter();
+    arr1[0].printArea();
+    arr1[1].printArea();
+    arr1[2].printArea();
 
     sort(arr1, arr1 + 3, compareTriangle);
 
     cout << endl;
 
 
-    arr1[0].printPerimeter();
-    arr1[1].printPerimeter();
-    arr1[2].printPerimeter();
+    arr1[0].printArea();
+    arr1[1].printArea();
+    arr1[2].printArea();
 
     return 0;
 
