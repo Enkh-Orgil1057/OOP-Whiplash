@@ -249,7 +249,3 @@ class Triangle : public TwoDShape{
         }
 
 };
-
-int main() {
- 
-}
