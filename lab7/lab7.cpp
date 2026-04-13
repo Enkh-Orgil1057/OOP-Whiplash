@@ -18,14 +18,15 @@ class Shape {
         }
         //gishuun ugugdul hevlej haruuldag function
         void print(){
-            cout << "Ner: " << name<< endl;
+            cout << "Ner: " << name << endl;
         }
         // нэр буцаах getter функц
-        string getter() {
+        string get_name() {
             return name;
         }
         //talbai oloh
         virtual float findArea() = 0;
+        
 
         //anhdagch baiguulagch
         Shape(){
@@ -43,6 +44,14 @@ class TwoDShape : public Shape {
         float negj_utga;
         float default_coor[2];
     public:
+        //setter function
+        void setter(string n, float negj, float coor[]){
+            name = n;
+            negj_utga = negj;
+            default_coor[0] = coor[0];
+            default_coor[1] = coor[1];
+        }
+        //getter functionnuud
         virtual float findPerimeter() = 0;
         // anhdagch baiguulagch
         TwoDShape() : Shape()
@@ -250,42 +259,5 @@ class Triangle : public TwoDShape{
 };
 
 int main() {
-    Square s;
-
-    float tal, x, y;
-
-    cout << "\nKvadratiin taliin urtiig oruulna uu: ";
-    cin >> tal;
-
-    cout << "\nDeed zuun oroin koordinat (x y) oruulna uu: ";
-    cin >> x >> y;
-
-    // setter ашиглана
-    s.setter(tal, x, y);
-
-    cout << "\nSquare Info\n";
-
-    // getter (print хийж байгаа)
-    s.getter();
-
-    cout << "\nArea: " << s.findArea() << endl;
-    cout << "\nPerimeter: " << s.findPerimeter() << endl;
-
-    Triangle T1;
-
-    cout << "\nGurvaljingiin taliin urtiig oruulna uu: ";
-    cin >> tal;
-
-    cout << "\nDeed oroin koordinat (x y) oruulna uu: ";
-    cin >> x >> y;
-
-    T1.setter(tal, x, y, "Гурвалжин");
-    
-    // дэлгэцэд хэвлэнэ
-    T1.getter();
-
-    cout << "\nArea: " << T1.findArea() << endl;
-    cout << "\nPerimeter: " << T1.findPerimeter() << endl;
-
-    return 0;
+ 
 }
