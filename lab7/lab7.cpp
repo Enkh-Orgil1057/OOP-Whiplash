@@ -125,12 +125,12 @@ public:
     //parametertei baiguulagch
     Square(string n, float negj, float coor[]) : TwoDShape(n, negj, coor){
 
-            deed_baruun[0] = default_coor[0] + negj_utga;
-            deed_baruun[1] = default_coor[1];
-            dood_baruun[0] = deed_baruun[0];
-            dood_baruun[1] = default_coor[1] - negj_utga;
-            dood_zvvn[0] = default_coor[0];
-            dood_zvvn[1] = default_coor[1] - negj_utga;
+            deed_baruun[0] = 0;
+            deed_baruun[1] = 0;
+            dood_baruun[0] = 0;
+            dood_baruun[1] = 0;
+            dood_zvvn[0] = 0;
+            dood_zvvn[1] = 0;
     }
     
     // setter
