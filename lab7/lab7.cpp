@@ -29,7 +29,7 @@ class Shape {
 
         //anhdagch baiguulagch
         Shape(){
-            name = '0';
+            name = "hooson";
         }
         //parametertei baiguulagch
         Shape(string n){
