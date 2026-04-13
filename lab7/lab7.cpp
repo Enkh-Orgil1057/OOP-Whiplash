@@ -24,10 +24,6 @@ class Shape {
         string get_name() {
             return name;
         }
-        //talbai oloh
-        virtual float findArea() = 0;
-        
-
         //anhdagch baiguulagch
         Shape(){
             name = "hooson";
@@ -45,14 +41,19 @@ class TwoDShape : public Shape {
         float default_coor[2];
     public:
         //setter function
-        void setter(string n, float negj, float coor[]){
+        void setter(string n, float negj, float x, float y){
             name = n;
             negj_utga = negj;
-            default_coor[0] = coor[0];
-            default_coor[1] = coor[1];
+            default_coor[0] = x;
+            default_coor[1] = y;
         }
         //getter functionnuud
+        float get_negj_utga(){
+            return negj_utga;
+        }
         virtual float findPerimeter() = 0;
+        //talbai oloh
+        virtual float findArea() = 0;
         // anhdagch baiguulagch
         TwoDShape() : Shape()
         {
@@ -61,12 +62,13 @@ class TwoDShape : public Shape {
             default_coor[1] = 0;
         }
         // parametertei baiguulagch
-        TwoDShape(string n, float negj, float coor[]) : Shape(n)
+        TwoDShape(string n, float negj, float x, float y) : Shape(n)
         {
             negj_utga = negj;
-            default_coor[0] = coor[0];
-            default_coor[1] = coor[1];
+            default_coor[0] = x;
+            default_coor[1] = y;
         }
+        
 };
 
 class Circle : public TwoDShape{
@@ -81,10 +83,10 @@ class Circle : public TwoDShape{
         }
 
         //garaas toirgiin tuv tseg bolon, negj_utga utgiig avah
-        void setter(float _rad, float _center[], string n){
+        void setter(string n, float _rad, float x, float y){
             negj_utga = _rad;
-            default_coor[0] = _center[0];
-            default_coor[1] = _center[1];
+            default_coor[0] = x;
+            default_coor[1] = y;
             name = n;
         }
         //oruulsan utguudiig harah
@@ -93,18 +95,14 @@ class Circle : public TwoDShape{
             cout<< "Tuv tseg = " << default_coor[0] << ", "<< default_coor[1] << endl; 
         }
         //negj_utga butsaah function
-        float get_rad(){
-            return negj_utga;
-        }
+        float get_rad(){ return negj_utga; }
         //tuv tseg butsaah function
-        float* get_center(){
-            return default_coor; 
-        }
+        float* get_center(){ return default_coor; }
         //anhdagch baiguulagch
         Circle() : TwoDShape(){}
         
         //parametertei baiguulagch
-        Circle(string n, float negj, float coor[]) : TwoDShape(n, negj, coor){}
+        Circle(string n, float negj, float x, float y) : TwoDShape(n, negj, x, y){}
 };
 
 // Квадрат хэмээх классыг TwoDShape функцээс удамшуулав
@@ -118,12 +116,10 @@ protected:
 public:
 
     //anhdagch baiguulagch
-    Square() : TwoDShape(){
-
-    }
+    Square() : TwoDShape(){}
         
     //parametertei baiguulagch
-    Square(string n, float negj, float coor[]) : TwoDShape(n, negj, coor){
+    Square(string n, float negj, float x, float y) : TwoDShape(n, negj, x, y){
 
             deed_baruun[0] = 0;
             deed_baruun[1] = 0;
@@ -174,10 +170,6 @@ public:
         cout << "Dood zuun: (" << dood_zvvn[0] << ", " << dood_zvvn[1] << ")\n";
     }
 
-    //taliin urt butsaah function
-    float get_tal(){
-        return negj_utga;
-    }
     //oroinuudiig coordinatruudig butsaah funcitonuud
     float* get_deed_zvvn(){ return default_coor;}
     float* get_dood_zvvn(){ return dood_zvvn;}
@@ -189,17 +181,12 @@ public:
 // Зөв гурвалжин классыг TwoDShape классаас удамшуулав
 class Triangle : public TwoDShape{
     protected:
-        float taliin_urt;
-        float deed_coor[2];
         float zuun_dood_coor[2];
         float baruun_dood_coor[2];
     public: 
 
         // анхдагч байгуулагч
         Triangle() : TwoDShape() {
-            taliin_urt = 0;
-            deed_coor[0] = 0;
-            deed_coor[1] = 0;
             zuun_dood_coor[0] = 0;
             zuun_dood_coor[1] = 0;
             baruun_dood_coor[0] = 0;
@@ -207,54 +194,34 @@ class Triangle : public TwoDShape{
         }
 
         //параметртэй байгуулагч
-        Triangle(string n, float negj_utga, float x, float y) : TwoDShape() {
-            name = n;
-            taliin_urt = negj_utga;
-            deed_coor[0] = x;
-            deed_coor[1] = y;
-            zuun_dood_coor[0] = deed_coor[0]-(taliin_urt/2.0);
-            zuun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
-            baruun_dood_coor[0] = deed_coor[0]+(taliin_urt/2.0);
-            baruun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
+        Triangle(string n, float negj, float x, float y) : TwoDShape(n ,negj, x ,y) {
+            zuun_dood_coor[0] = x -(negj/2.0);
+            zuun_dood_coor[1] = y -(negj*sqrt(3.0)/2.0);
+            baruun_dood_coor[0] = x +(negj/2.0);
+            baruun_dood_coor[1] = y -(negj*sqrt(3.0)/2.0);
         }
 
         //гараас талын урт, нэр болон дээд цэгийн координатыг авах 
-        void setter(string n, float negj_utga, float x, float y){
-            taliin_urt = negj_utga;
-            deed_coor[0] = x;
-            deed_coor[1] = y;
+        void setter(string n, float negj, float x, float y){
+            negj_utga = negj;
+            default_coor[0] = x;
+            default_coor[1] = y;
             name = n;
-            zuun_dood_coor[0] = deed_coor[0]-(taliin_urt/2.0);
-            zuun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
-            baruun_dood_coor[0] = deed_coor[0]+(taliin_urt/2.0);
-            baruun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
+            zuun_dood_coor[0] = default_coor[0]-(negj_utga/2.0);
+            zuun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
+            baruun_dood_coor[0] = default_coor[0]+(negj_utga/2.0);
+            baruun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
         }
-
-        float get_taliin_urt(){
-            return taliin_urt;
-        }
-        float get_deed_coor_x(){
-            return deed_coor[0];
-        }
-        float get_deed_coor_y(){
-            return deed_coor[1];
-        }
-        float get_zuun_dood_coor_x(){
-            return zuun_dood_coor[0];
-        }
-        float get_zuun_dood_coor_y(){
-            return zuun_dood_coor[1];
-        }
-        float get_baruun_dood_coor_x(){
-            return baruun_dood_coor[0];
-        }
-        float get_baruun_dood_coor_y(){
-            return baruun_dood_coor[1];
-        }
+        //getter funcionuud
+        float* get_deed_coor(){ return default_coor; }
+        float* get_zuun_dood_coor(){ return zuun_dood_coor;}
+        float* get_baruun_dood_coor(){ return baruun_dood_coor;}
 
         // координатын утгуудыг хэвлэдэг функц:
         void print(){
-        cout << "Taliin urt: " << fixed << setprecision(2) <<  taliin_urt << endl;
+        cout << "Taliin urt: " << fixed << setprecision(2) <<  negj_utga << endl;
+
+        cout << "Deed: (" << fixed << setprecision(2) << default_coor[0] << "," << fixed << setprecision(2) << default_coor[1] << ")\n";
 
         cout << "Dood baruun: (" << fixed << setprecision(2) << baruun_dood_coor[0]<< ", " << fixed << setprecision(2) << baruun_dood_coor[1] << ")\n";
 
@@ -273,12 +240,12 @@ class Triangle : public TwoDShape{
 
         // талбай бодож гаргах функц
         float findArea(){
-            return taliin_urt*taliin_urt*sqrt(3.0)/4;
+            return negj_utga*negj_utga*sqrt(3.0)/4;
         }
 
         // периметрийг бодож гаргах функц
         float findPerimeter(){
-            return taliin_urt*3;
+            return negj_utga*3;
         }
 
 };
