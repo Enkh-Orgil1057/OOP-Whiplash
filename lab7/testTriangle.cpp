@@ -68,17 +68,12 @@ class TwoDShape : public Shape {
 // Зөв гурвалжин классыг TwoDShape классаас удамшуулав
 class Triangle : public TwoDShape{
     protected:
-        float taliin_urt;
-        float deed_coor[2];
         float zuun_dood_coor[2];
         float baruun_dood_coor[2];
     public: 
 
         // анхдагч байгуулагч
         Triangle() : TwoDShape() {
-            taliin_urt = 0;
-            deed_coor[0] = 0;
-            deed_coor[1] = 0;
             zuun_dood_coor[0] = 0;
             zuun_dood_coor[1] = 0;
             baruun_dood_coor[0] = 0;
@@ -86,37 +81,37 @@ class Triangle : public TwoDShape{
         }
 
         //параметртэй байгуулагч
-        Triangle(string n, float negj_utga, float x, float y) : TwoDShape() {
+        Triangle(string n, float negj_utga, float x, float y) : TwoDShape(name, negj_utga, default_coor) {
             name = n;
-            taliin_urt = negj_utga;
-            deed_coor[0] = x;
-            deed_coor[1] = y;
-            zuun_dood_coor[0] = deed_coor[0]-(taliin_urt/2.0);
-            zuun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
-            baruun_dood_coor[0] = deed_coor[0]+(taliin_urt/2.0);
-            baruun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
+            negj_utga = negj_utga;
+            default_coor[0] = x;
+            default_coor[1] = y;
+            zuun_dood_coor[0] = default_coor[0]-(negj_utga/2.0);
+            zuun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
+            baruun_dood_coor[0] = default_coor[0]+(negj_utga/2.0);
+            baruun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
         }
 
         //гараас талын урт, нэр болон дээд цэгийн координатыг авах 
-        void setter(string n, float negj_utga, float x, float y){
-            taliin_urt = negj_utga;
-            deed_coor[0] = x;
-            deed_coor[1] = y;
+        void setter(string n, float negj, float x, float y){
+            negj_utga = negj;
+            default_coor[0] = x;
+            default_coor[1] = y;
             name = n;
-            zuun_dood_coor[0] = deed_coor[0]-(taliin_urt/2.0);
-            zuun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
-            baruun_dood_coor[0] = deed_coor[0]+(taliin_urt/2.0);
-            baruun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
+            zuun_dood_coor[0] = default_coor[0]-(negj_utga/2.0);
+            zuun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
+            baruun_dood_coor[0] = default_coor[0]+(negj_utga/2.0);
+            baruun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
         }
 
         float get_taliin_urt(){
-            return taliin_urt;
+            return negj_utga;
         }
         float get_deed_coor_x(){
-            return deed_coor[0];
+            return default_coor[0];
         }
         float get_deed_coor_y(){
-            return deed_coor[1];
+            return default_coor[1];
         }
         float get_zuun_dood_coor_x(){
             return zuun_dood_coor[0];
@@ -133,7 +128,7 @@ class Triangle : public TwoDShape{
 
         // координатын утгуудыг хэвлэдэг функц:
         void print(){
-        cout << "Taliin urt: " << fixed << setprecision(2) <<  taliin_urt << endl;
+        cout << "Taliin urt: " << fixed << setprecision(2) <<  negj_utga << endl;
 
         cout << "Dood baruun: (" << fixed << setprecision(2) << baruun_dood_coor[0]<< ", " << fixed << setprecision(2) << baruun_dood_coor[1] << ")\n";
 
@@ -147,12 +142,12 @@ class Triangle : public TwoDShape{
 
         // талбай бодож гаргах функц
         float findArea(){
-            return taliin_urt*taliin_urt*sqrt(3.0)/4;
+            return negj_utga*negj_utga*sqrt(3.0)/4;
         }
 
         // периметрийг бодож гаргах функц
         float findPerimeter(){
-            return taliin_urt*3;
+            return negj_utga*3;
         }
 
 };
