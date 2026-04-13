@@ -132,8 +132,8 @@ class Triangle : public TwoDShape{
         }
 
         // периметрийг хэвлэдэг функц
-        void printPerimeter(){
-            cout << "Perimeter: " << fixed << setprecision(2) << findPerimeter() << endl;
+        void printArea(){
+            cout << "Area: " << fixed << setprecision(2) << findArea() << endl;
         }
 
         // талбай бодож гаргах функц
@@ -162,18 +162,18 @@ int main(){
 
     cout << endl;
 
-    arr1[0].printPerimeter();
-    arr1[1].printPerimeter();
-    arr1[2].printPerimeter();
+    arr1[0].printArea();
+    arr1[1].printArea();
+    arr1[2].printArea();
 
     sort(arr1, arr1 + 3, compareTriangle);
 
     cout << endl;
 
 
-    arr1[0].printPerimeter();
-    arr1[1].printPerimeter();
-    arr1[2].printPerimeter();
+    arr1[0].printArea();
+    arr1[1].printArea();
+    arr1[2].printArea();
 
     return 0;
 
