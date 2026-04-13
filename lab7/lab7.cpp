@@ -22,53 +22,79 @@ class Shape {
         }
         // нэр буцаах getter функц
         string getter() {
-        return name;
+            return name;
         }
         //talbai oloh
         virtual float findArea() = 0;
+
+        //anhdagch baiguulagch
+        Shape(){
+            name = '0';
+        }
+        //parametertei baiguulagch
+        Shape(string n){
+            name = n;
+        }
 };
 
 // TwoDShape эх функцийг Shape функцээс удамшуулан авна:
 class TwoDShape : public Shape {
+    protected:
+        float negj_utga;
+        float default_coor[2];
     public:
         virtual float findPerimeter() = 0;
+        // anhdagch baiguulagch
+        TwoDShape() : Shape()
+        {
+            negj_utga = 0;
+            default_coor[0] = 0;
+            default_coor[1] = 0;
+        }
+        // parametertei baiguulagch
+        TwoDShape(string n, float negj, float coor[]) : Shape(n)
+        {
+            negj_utga = negj;
+            default_coor[0] = coor[0];
+            default_coor[1] = coor[1];
+        }
 };
 
 class Circle : public TwoDShape{
-    private:
-        float center_coor[2];
-        float radius;
     public:
         //perimeter oloh function oloh: 2*rad*PI
         float findPerimeter()  {
-            return (2 * radius * PI);
+            return (2 * negj_utga * PI);
         }
         //toirgiin talbai oloh: rad^2 * PI
         float findArea()  {
-            return (radius * radius) * PI;
+            return (negj_utga * negj_utga) * PI;
         }
 
-        //garaas toirgiin tuv tseg bolon, radius utgiig avah
+        //garaas toirgiin tuv tseg bolon, negj_utga utgiig avah
         void setter(float _rad, float _center[], string n){
-            radius = _rad;
-            center_coor[0] = _center[0];
-            center_coor[1] = _center[1];
+            negj_utga = _rad;
+            default_coor[0] = _center[0];
+            default_coor[1] = _center[1];
             name = n;
         }
         //oruulsan utguudiig harah
         void print(){
-            cout<< "Radius = " << radius << endl;
-            cout<< "Tuv tseg = " << center_coor[0] << ", "<< center_coor[1] << endl; 
+            cout<< "negj_utga = " << negj_utga << endl;
+            cout<< "Tuv tseg = " << default_coor[0] << ", "<< default_coor[1] << endl; 
         }
-        //radius butsaah function
+        //negj_utga butsaah function
         float get_rad(){
-            return radius;
+            return negj_utga;
         }
         //tuv tseg butsaah function
         float* get_center(){
-            return center_coor; 
+            return default_coor; 
         }
-
+        //anhdagch baiguulagch
+        Circle() : TwoDShape(){}
+        //parametertei baiguulagch
+        Circle(string n, float negj, float coor[]) : TwoDShape(n, negj, coor){}
 };
 
 // Квадрат хэмээх классыг TwoDShape функцээс удамшуулав
