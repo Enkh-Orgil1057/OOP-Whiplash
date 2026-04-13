@@ -124,7 +124,14 @@ public:
         
     //parametertei baiguulagch
     Square(string n, float negj, float coor[]) : TwoDShape(n, negj, coor){
-
+            default_coor[0] = default_coor[0];
+            default_coor[1] = default_coor[1];
+            deed_baruun[0] = default_coor[0] + negj_utga;
+            deed_baruun[1] = default_coor[1];
+            dood_baruun[0] = deed_baruun[0];
+            dood_baruun[1] = default_coor[1] - negj_utga;
+            dood_zvvn[0] = default_coor[0];
+            dood_zvvn[1] = default_coor[1] - negj_utga;
     }
     
     // setter
@@ -139,6 +146,9 @@ public:
             dood_baruun[1] = y - negj_utga;
             dood_zvvn[0] = x;
             dood_zvvn[1] = default_coor[1] - negj_utga;
+          }
+          else {
+            cout << "Taliin urt 0-s ih baih yostoi!" << endl;
           }
     }
 
