@@ -119,7 +119,7 @@ class Circle : public TwoDShape{
 // Square класс
 class Square : public TwoDShape {
 protected:
-    float deed_baruun[2]; //top-right
+    float deed_baruun[2]; //top-right#include <iostream>
     float dood_baruun[2]; // bottom-right
     float dood_zvvn[2]; //bottom-left
 
@@ -275,10 +275,40 @@ void sortArea(TwoDShape* arr[], int n){
     for(i = 1; i < n; i++){
         temp = arr[i];
         j = i - 1;
-        while(j >= 0 && temp->findArea() < arr[j]->findArea()){
+        while(j >= 0 && temp->findArea() > arr[j]->findArea()){
             arr[j+1] = arr[j];
-            j++;
+            j--;
         }
         arr[j+1] = temp;
     }
+}
+
+int main(){
+    TwoDShape* arr[6] = 
+    {
+        new Circle("Circle1", 3, 2, 2),
+        new Circle("Circle2", 2, 2, 2),
+        new Square("Square1", 7, 0, 0),
+        new Square("Square2", 5, 0, 0),
+        new Triangle("Triangle1", 1, 1, 1),
+        new Triangle("Triangle2", 2, 2, 2),
+    };
+
+    cout << "====== Эрэмбэлээгүй =======" << endl << endl;
+    for (int i = 0; i < 6; i++){
+        cout << arr[i]->get_name() << "->" << arr[i]->findArea() << endl;
+    }
+
+    sortArea(arr, 6);
+    
+    cout << "====== Эрэмбэлсэн =======" << endl << endl;
+        for (int i = 0; i < 6; i++){
+        cout << arr[i]->get_name() << "->" << arr[i]->findArea() << endl;
+    }
+
+    for (int i = 0; i < 6; i++){
+        delete arr[i];
+    }
+    
+    return 0;
 }
