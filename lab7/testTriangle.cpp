@@ -156,8 +156,8 @@ bool compareTriangle(Triangle a, Triangle b) {
 int main(){
     Triangle arr1[3];
 
-    arr1[0].setter("Tri1", 1, 1, 1);
-    arr1[1].setter("Tri2", 2, 2, 2);
+    arr1[0].setter("Tri2", 2, 2, 2);
+    arr1[1].setter("Tri1", 1, 1, 1);
     arr1[2].setter("Tri3", 3, 3, 3);
 
     cout << endl;
