@@ -194,36 +194,40 @@ class Triangle : public TwoDShape{
         float zuun_dood_coor[2];
         float baruun_dood_coor[2];
     public: 
-        // getter функцуудыг тодорхойлов:
-        void print() {
-        cout << "Taliin urt: " << fixed << setprecision(2) <<  taliin_urt << endl;
 
-        cout << "Dood baruun: (" << fixed << setprecision(2) << find_baruun_dood_coor_x()<< ", " << fixed << setprecision(2) << find_baruun_dood_coor_y() << ")\n";
-
-        cout << "Dood zuun: (" << fixed << setprecision(2) << find_zuun_dood_coor_x() << ", " << fixed << setprecision(2) << find_zuun_dood_coor_y() << ")\n";
-    }
-        
-        //Orgil: Tailbariin daguu "deed oroin coordinat bolon taliin urtiig avaad nuguu 2 oroin bairshliig oldog baina"
-        // setter функцуудыг тодорхойлов:
-        void set_taliin_urt(float t){
-            if (t > 0)
-                taliin_urt = t;
+        // анхдагч байгуулагч
+        Triangle() : TwoDShape() {
+            taliin_urt = 0;
+            deed_coor[0] = 0;
+            deed_coor[1] = 0;
+            zuun_dood_coor[0] = 0;
+            zuun_dood_coor[1] = 0;
+            baruun_dood_coor[0] = 0;
+            baruun_dood_coor[1] = 0;
         }
 
-        void set_deed_coor(float d1, float d2){
-                deed_coor[0] = d1;
-                deed_coor[1] = d2;
-        }
-        // setter() функцээ set_taliin_urt ба set_deed_coor
-        // функцийг дууддаг болгон дахин тодорхойлов
-        void setter(float a, float b, float c, string n){
-            set_taliin_urt(a); // талын урт авах
-            set_deed_coor(b, c); // дээд координатыг авах
-            find_zuun_dood_coor_x();
-            find_zuun_dood_coor_y();
-            find_baruun_dood_coor_x();
-            find_baruun_dood_coor_y();
+        //параметртэй байгуулагч
+        Triangle(string n, float negj_utga, float x, float y) : TwoDShape() {
             name = n;
+            taliin_urt = negj_utga;
+            deed_coor[0] = x;
+            deed_coor[1] = y;
+            zuun_dood_coor[0] = deed_coor[0]-(taliin_urt/2.0);
+            zuun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
+            baruun_dood_coor[0] = deed_coor[0]+(taliin_urt/2.0);
+            baruun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
+        }
+
+        //гараас талын урт, нэр болон дээд цэгийн координатыг авах 
+        void setter(string n, float negj_utga, float x, float y){
+            taliin_urt = negj_utga;
+            deed_coor[0] = x;
+            deed_coor[1] = y;
+            name = n;
+            zuun_dood_coor[0] = deed_coor[0]-(taliin_urt/2.0);
+            zuun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
+            baruun_dood_coor[0] = deed_coor[0]+(taliin_urt/2.0);
+            baruun_dood_coor[1] = deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
         }
 
         float get_taliin_urt(){
@@ -248,31 +252,23 @@ class Triangle : public TwoDShape{
             return baruun_dood_coor[1];
         }
 
-        // Shape эх функцийн талбай бодож гаргах
-        // функцийг дахин тодорхойлов:
+        // координатын утгуудыг хэвлэдэг функц:
+        void print(){
+        cout << "Taliin urt: " << fixed << setprecision(2) <<  taliin_urt << endl;
+
+        cout << "Dood baruun: (" << fixed << setprecision(2) << baruun_dood_coor[0]<< ", " << fixed << setprecision(2) << baruun_dood_coor[1] << ")\n";
+
+        cout << "Dood zuun: (" << fixed << setprecision(2) << zuun_dood_coor[0] << ", " << fixed << setprecision(2) << zuun_dood_coor[1] << ")\n";
+    }
+
+        // талбай бодож гаргах функц
         float findArea(){
-            return taliin_urt*taliin_urt/2;
+            return taliin_urt*taliin_urt*sqrt(3.0)/4;
         }
 
-        // TwoDShape эх функцийн Периметрийг бодож
-        // гаргах функцийг дахин тодорхойлов:
+        // периметрийг бодож гаргах функц
         float findPerimeter(){
             return taliin_urt*3;
-        }
-
-        // цэгийг бодож гаргах функц бүрийг тодорхойлов:
-        // үүний доор нь нэгтгэв.
-        float find_zuun_dood_coor_x(){
-            return deed_coor[0]-(taliin_urt/2.0);
-        }
-        float find_zuun_dood_coor_y(){
-            return deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
-        }
-        float find_baruun_dood_coor_x(){
-            return deed_coor[0]+(taliin_urt/2.0);
-        }
-        float find_baruun_dood_coor_y(){
-            return deed_coor[1]-(taliin_urt*sqrt(3.0)/2.0);
         }
 
 };
