@@ -102,6 +102,7 @@ class Circle : public TwoDShape{
         }
         //anhdagch baiguulagch
         Circle() : TwoDShape(){}
+        
         //parametertei baiguulagch
         Circle(string n, float negj, float coor[]) : TwoDShape(n, negj, coor){}
 };
@@ -110,43 +111,52 @@ class Circle : public TwoDShape{
 // Square класс
 class Square : public TwoDShape {
 protected:
-    float taliin_urt;
-    float deed_zvvn[2]; // top-left
     float deed_baruun[2]; //top-right
     float dood_baruun[2]; // bottom-right
     float dood_zvvn[2]; //bottom-left
 
 public:
+
+    //anhdagch baiguulagch
+    Square() : TwoDShape(){
+
+    }
+        
+    //parametertei baiguulagch
+    Square(string n, float negj, float coor[]) : TwoDShape(n, negj, coor){
+
+    }
+    
     // setter
     void setter(float t, float x, float y) {
         if (t > 0) {
-            taliin_urt = t;
-            deed_zvvn[0] = x;
-            deed_zvvn[1] = y;
-            deed_baruun[0] = deed_zvvn[0]+taliin_urt;
+            negj_utga = t;
+            default_coor[0] = x;
+            default_coor[1] = y;
+            deed_baruun[0] = default_coor[0] + negj_utga;
             deed_baruun[1] = y;
             dood_baruun[0] = deed_baruun[0];
-            dood_baruun[1] = y - taliin_urt;
+            dood_baruun[1] = y - negj_utga;
             dood_zvvn[0] = x;
-            dood_zvvn[1] = deed_zvvn[1] - taliin_urt;
+            dood_zvvn[1] = default_coor[1] - negj_utga;
           }
     }
 
     // Талбай
     float findArea() {
-        return taliin_urt * taliin_urt;
+        return negj_utga * negj_utga;
     }
 
     // Периметр
     float findPerimeter() {
-        return 4 * taliin_urt;
+        return 4 * negj_utga;
     }
 
     // Бүх мэдээлэл хэвлэх
     void print() {
-        cout << "Taliin urt: " << taliin_urt << endl;
+        cout << "Taliin urt: " << negj_utga << endl;
 
-        cout << "Deed zuun: (" << deed_zvvn[0] << ", " << deed_zvvn[1] << ")\n";
+        cout << "Deed zuun: (" << default_coor[0] << ", " << default_coor[1] << ")\n";
 
         cout << "Deed baruun: (" << deed_baruun[0] << ", " << deed_baruun[1] << ")\n";
 
@@ -157,10 +167,10 @@ public:
 
     //taliin urt butsaah function
     float get_tal(){
-        return taliin_urt;
+        return negj_utga;
     }
     //oroinuudiig coordinatruudig butsaah funcitonuud
-    float* get_deed_zvvn(){ return deed_zvvn;}
+    float* get_deed_zvvn(){ return default_coor;}
     float* get_dood_zvvn(){ return dood_zvvn;}
     float* get_deed_baruun(){ return deed_baruun;}
     float* get_dood_baruun(){ return dood_baruun;}
