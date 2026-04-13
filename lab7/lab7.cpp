@@ -261,3 +261,24 @@ class Triangle : public TwoDShape{
         }
 
 };
+
+//--------------------------------------------------------
+//--------------------busad function------------------------
+//--------------------------------------------------------
+
+//erembleh fnction
+//TwoDShapes turliin n shirheg gishuuntei husnegt avaad tuunii elementuudiig insertion sort algorithm ashiglan eremblene
+void sortArea(TwoDShape* arr[], int n){
+
+    TwoDShape* temp;
+    int i, j;
+    for(i = 1; i < n; i++){
+        temp = arr[i];
+        j = i - 1;
+        while(j >= 0 && temp->findArea() < arr[j]->findArea()){
+            arr[j+1] = arr[j];
+            j++;
+        }
+        arr[j+1] = temp;
+    }
+}
