@@ -81,7 +81,7 @@ class Triangle : public TwoDShape{
         }
 
         //параметртэй байгуулагч
-        Triangle(string n, float negj_utga, float x, float y) : TwoDShape(name, negj_utga, default_coor) {
+        Triangle(string n, float negj_utga, float x, float y) : TwoDShape() {
             zuun_dood_coor[0] = default_coor[0]-(negj_utga/2.0);
             zuun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
             baruun_dood_coor[0] = default_coor[0]+(negj_utga/2.0);

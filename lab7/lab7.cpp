@@ -259,7 +259,17 @@ class Triangle : public TwoDShape{
         cout << "Dood baruun: (" << fixed << setprecision(2) << baruun_dood_coor[0]<< ", " << fixed << setprecision(2) << baruun_dood_coor[1] << ")\n";
 
         cout << "Dood zuun: (" << fixed << setprecision(2) << zuun_dood_coor[0] << ", " << fixed << setprecision(2) << zuun_dood_coor[1] << ")\n";
-    }
+        }
+
+        // периметрийг хэвлэдэг функц
+        void printPerimeter(){
+            cout << "Perimeter: " << fixed << setprecision(2) << findPerimeter() << endl;
+        }
+
+        // талбайг хэвлэдэг функц
+        void printArea(){
+            cout << "Area: " << fixed << setprecision(2) << findArea() << endl;
+        }
 
         // талбай бодож гаргах функц
         float findArea(){
