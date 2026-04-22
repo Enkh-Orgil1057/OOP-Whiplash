@@ -101,10 +101,9 @@ class Circle : public TwoDShape{
             cout<< "negj_utga = " << negj_utga << endl;
             cout<< "Tuv tseg = " << default_coor[0] << ", "<< default_coor[1] << endl; 
         }
-        //negj_utga butsaah function
-        float get_rad(){ return negj_utga; }
-        //tuv tseg butsaah function
+
         float* get_center(){ return default_coor; }
+
         //anhdagch baiguulagch
         Circle() : TwoDShape(){}
         
