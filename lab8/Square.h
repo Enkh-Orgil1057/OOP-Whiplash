@@ -34,10 +34,10 @@ public:
     void print();
 
     //oroinuudiig coordinatruudig butsaah funcitonuud
-    float* get_deed_zvvn(){ return default_coor;}
-    float* get_dood_zvvn(){ return dood_zvvn;}
-    float* get_deed_baruun(){ return deed_baruun;}
-    float* get_dood_baruun(){ return dood_baruun;}
+    float* get_deed_zvvn();
+    float* get_dood_zvvn();
+    float* get_deed_baruun();
+    float* get_dood_baruun();
 }
 ;
 #endif

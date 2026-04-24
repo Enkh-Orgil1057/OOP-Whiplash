@@ -10,13 +10,18 @@ using namespace std;
 class TwoDShape : public Shape {
     protected:
         float negj_utga;
-        float default_coor[2];
+        float* coordinate;
     public:
         void setter(string, float, float, float);
         float get_negj_utga();
+        float* get_coordinate();
         virtual float findPerimeter() = 0;
         virtual float findArea() = 0;
+        ~TwoDShape(){
+            delete coordinate;
+        }
         TwoDShape();
         TwoDShape(string, float, float, float);
 };
 #endif
+
