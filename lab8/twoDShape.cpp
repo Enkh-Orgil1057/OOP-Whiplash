@@ -27,7 +27,10 @@ TwoDShape :: TwoDShape() : Shape(){
     negj_utga = 0;
 }
 
-TwoDShape :: TwoDShape(string n, float negj, float x, float y) : Shape(n){
-    setter(n, negj, x, y);
+TwoDShape :: TwoDShape(string n, float negj) : Shape(n){
+    negj_utga = negj;
+}
+TwoDShape :: ~TwoDShape(){
+    delete coordinate;
 }
 

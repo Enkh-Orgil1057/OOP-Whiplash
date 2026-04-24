@@ -17,11 +17,9 @@ class TwoDShape : public Shape {
         float* get_coordinate();
         virtual float findPerimeter() = 0;
         virtual float findArea() = 0;
-        ~TwoDShape(){
-            delete coordinate;
-        }
+        ~TwoDShape();
         TwoDShape();
-        TwoDShape(string, float, float, float);
+        TwoDShape(string, float);
 };
 #endif
 
