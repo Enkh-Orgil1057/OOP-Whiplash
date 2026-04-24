@@ -15,8 +15,11 @@ class TwoDShape : public Shape {
         void setter(string, float, float, float);
         float get_negj_utga();
         float* get_coordinate();
+
         virtual float findPerimeter() = 0;
         virtual float findArea() = 0;
+        virtual void updateCoor() = 0;
+
         ~TwoDShape();
         TwoDShape();
         TwoDShape(string, float);

@@ -8,15 +8,15 @@ using namespace std;
 
 class Triangle : public TwoDShape
 {
-    protected:
-        float dood_baruun[2]; // bottom-right
-        float dood_zvvn[2]; //bottom-left
     public:
         Triangle();
         Triangle(string, float, float, float);
         float findPerimeter();
         float findArea();
-        float* get_dood_baruun();
-        float* get_dood_zvvn();
+        void setter(string, float, float, float);
+        void print();
+
+    private:
+        void updateCoor(float, float, float);
 };
 #endif

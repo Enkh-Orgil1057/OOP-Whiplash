@@ -13,5 +13,10 @@ class Circle : public TwoDShape
         Circle(string, float, float, float);
         float findPerimeter();
         float findArea();
+        void print();
+        void setter(string, float, float, float);
+
+    private:
+        void updateCoor(float, float);
 };
 #endif

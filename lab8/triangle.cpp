@@ -1,68 +1,55 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
-
-#include "Shape.h"
-#include "TwoDShape.h"
+//zuvhun uuriin classiig duudahad bolno~
+//COMMENT = GETTER FUNCITONUUDIIG USTGASAN. gants TwoDshapes-iin getter() eer coordinate husnegtiig butsaana.
+#include "Triangle.h"
 
 using namespace std;
 
+void Triangle :: updateCoor(float negj, float x, float y)
+{
+    coordinate[0] = x; //oroi x
+    coordinate[1] = y; //oroi y
+    coordinate[2] = x -(negj/2.0); // зүүн доод x
+    coordinate[3] = y -(negj*sqrt(3.0)/2.0); // зүүн доод y
+    coordinate[4] = x +(negj/2.0); // баруун доод x
+    coordinate[5] = y -(negj*sqrt(3.0)/2.0); // баруун доод y
+}
 // Анхдагч байгуулагч
-Triangle() : TwoDShape(){
-    coordinate[0] = 0; // зүүн доод x
-    coordinate[1] = 0; // зүүн доод y
-    coordinate[2] = 0; // баруун доод x
-    coordinate[3] = 0; // баруун доод y
+Triangle :: Triangle() : TwoDShape()
+{
+    coordinate = new float[6]{0};
 }
 //параметртэй байгуулагч
-Triangle(string n, float negj, float x, float y) : TwoDShape(n ,negj, x ,y) {
-    zuun_dood_coor[0] = x -(negj/2.0);
-    zuun_dood_coor[1] = y -(negj*sqrt(3.0)/2.0);
-    baruun_dood_coor[0] = x +(negj/2.0);
-    baruun_dood_coor[1] = y -(negj*sqrt(3.0)/2.0);
+Triangle :: Triangle(string n, float negj, float x, float y) : TwoDShape(n ,negj) 
+{
+    coordinate = new float[6];
+    updateCoor(negj, x, y);
 }
 
 //гараас талын урт, нэр болон дээд цэгийн координатыг авах 
-void setter(string n, float negj, float x, float y){
+void Triangle :: setter(string n, float negj, float x, float y)
+{
     negj_utga = negj;
-    default_coor[0] = x;
-    default_coor[1] = y;
     name = n;
-    zuun_dood_coor[0] = default_coor[0]-(negj_utga/2.0);
-    zuun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
-    baruun_dood_coor[0] = default_coor[0]+(negj_utga/2.0);
-    baruun_dood_coor[1] = default_coor[1]-(negj_utga*sqrt(3.0)/2.0);
+    updateCoor(negj, x, y);
 }
-
-//getter funcionuud
-float* get_deed_coor(){ return default_coor; }
-float* get_zuun_dood_coor(){ return zuun_dood_coor;}
-float* get_baruun_dood_coor(){ return baruun_dood_coor;}
 
 // координатын утгуудыг хэвлэдэг функц:
-void print(){
+void Triangle :: print(){
     cout << "Taliin urt: " << fixed << setprecision(2) <<  negj_utga << endl;
-    cout << "Deed: (" << fixed << setprecision(2) << default_coor[0] << "," << fixed << setprecision(2) << default_coor[1] << ")\n";
-    cout << "Dood baruun: (" << fixed << setprecision(2) << baruun_dood_coor[0]<< ", " << fixed << setprecision(2) << baruun_dood_coor[1] << ")\n";
-    cout << "Dood zuun: (" << fixed << setprecision(2) << zuun_dood_coor[0] << ", " << fixed << setprecision(2) << zuun_dood_coor[1] << ")\n";
-}
-
-// периметрийг хэвлэдэг функц
-void printPerimeter(){
-        cout << "Perimeter: " << fixed << setprecision(2) << findPerimeter() << endl;
-}
-
-// талбайг хэвлэдэг функц
-void printArea(){
-        cout << "Area: " << fixed << setprecision(2) << findArea() << endl;
+    cout << "Deed: (" << fixed << setprecision(2) << coordinate[0] << "," << fixed << setprecision(2) << coordinate[1] << ")\n";
+    cout << "Dood baruun: (" << fixed << setprecision(2) << coordinate[2]<< ", " << fixed << setprecision(2) << coordinate[3] << ")\n";
+    cout << "Dood zuun: (" << fixed << setprecision(2) << coordinate[4] << ", " << fixed << setprecision(2) << coordinate[5] << ")\n";
 }
 
 // талбай бодож гаргах функц
-float findArea(){
+float Triangle :: findArea(){
         return negj_utga*negj_utga*sqrt(3.0)/4;
 }
 
 // периметрийг бодож гаргах функц
-float findPerimeter(){
+float Triangle :: findPerimeter(){
         return negj_utga*3;
 }
