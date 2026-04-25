@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-class Square : TwoDShape {
+class Square : public TwoDShape {
     public:
         Square();
         //parametertei baiguulagch
@@ -21,6 +21,5 @@ class Square : TwoDShape {
 
     private:
         void updateCoor(float, float, float);
-}
-;
+};
 #endif
