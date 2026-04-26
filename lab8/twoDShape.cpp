@@ -8,20 +8,20 @@ using namespace std;
 
 void TwoDShape ::setter(string n, float negj, float x, float y)
 {
-    name = n;
-    negj_utga = negj;
-    coordinate[0] = x;
-    coordinate[1] = y;
+    this->name = n;
+    this->negj_utga = negj;
+    this->coordinate[0] = x;
+    this->coordinate[1] = y;
 }
 
 float TwoDShape ::get_negj_utga()
 {
-    return negj_utga;
+    return this->negj_utga;
 }
 
 float *TwoDShape ::get_coordinate()
 {
-    return coordinate;
+    return this->coordinate;
 }
 /*
 TwoDShapes-iin baguulagch nar ni sanah oi nuutsluhgui. Tus ajliig tuunii huuhed classuud guitsetgene.
@@ -30,13 +30,13 @@ JICH: TwoDShapes ni hiisver class tul tuunii object uuseh anhnaas bolomjgui. Mun
 */
 TwoDShape ::TwoDShape() : Shape()
 {
-    negj_utga = 0;
+    this->negj_utga = 0;
 }
 TwoDShape ::TwoDShape(string n, float negj) : Shape(n)
 {
-    negj_utga = negj;
+    this->negj_utga = negj;
 }
 TwoDShape ::~TwoDShape()
 {
-    delete[] coordinate;
+    delete[] this->coordinate;
 }

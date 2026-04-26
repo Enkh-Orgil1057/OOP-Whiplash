@@ -18,7 +18,6 @@ class TwoDShape : public Shape {
 
         virtual float findPerimeter() = 0;
         virtual float findArea() = 0;
-        virtual void updateCoor() = 0;
 
         ~TwoDShape();
         TwoDShape();

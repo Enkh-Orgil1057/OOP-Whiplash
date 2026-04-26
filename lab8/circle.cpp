@@ -4,13 +4,13 @@ using namespace std;
 
 void Circle :: updateCoor(float x, float y)
 {
-    coordinate[0] = x;
-    coordinate[1] = y;
+    this->coordinate[0] = x;
+    this->coordinate[1] = y;
 }
 //anhdagch baiguulagch ni coordinate-nd zoriulj shine husnegt nuutslunu
 Circle :: Circle() : TwoDShape()
 {
-    coordinate = new float[2]{0};
+    this->coordinate = new float[2]{0};
 };
 /*
 parametertei baiguulagc ni mun sanah oig nuutslunu
@@ -19,29 +19,29 @@ coordinate-daa x, y utguudaa onooj ugnu.
 */
 Circle :: Circle(string name, float negj, float x, float y) : TwoDShape(name, negj)
 {
-    coordinate = new float[2];
-    updateCoor(x, y);
+    this->coordinate = new float[2];
+    this->updateCoor(x, y);
 };
 
 void Circle :: setter(string n, float negj, float x, float y)
 {
-    name = n;
-    negj_utga = negj;
-    updateCoor(x, y);
+    this->name = n;
+    this->negj_utga = negj;
+    this->updateCoor(x, y);
 }
 
 float Circle :: findPerimeter()
 {
-    return (2 * negj_utga * PI);
+    return (2 * (this->negj_utga) * PI);
 }
 
 float Circle :: findArea()  
 {
-    return (negj_utga * negj_utga) * PI;
+    return ((this->negj_utga) * (this->negj_utga)) * PI;
 }
 
 void Circle :: print() 
 {
-    cout<< "negj_utga = " << negj_utga << endl;
-    cout<< "Tuv tseg = " << coordinate[0] << ", "<< coordinate[1] << endl; 
+    cout<< "negj_utga = " << this->negj_utga << endl;
+    cout<< "Tuv tseg = " << this->coordinate[0] << ", "<< this->coordinate[1] << endl; 
 }
